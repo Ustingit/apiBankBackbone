@@ -1,4 +1,4 @@
-﻿@model ApiBankBackBone.Models.Apis.Api
+﻿@model ApiBankBackBone.Models.Apis.ApiDto
 
 @{
     ViewData["Title"] = "Details";
@@ -55,6 +55,24 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.License)
         </dd>
+        @if (Model.Methods.Any())
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Methods)
+            </dt>
+            <dd class="col-sm-10">
+                @foreach (var method in Model.Methods)
+                {
+                    <dt class="col-sm-2">
+                        @method.Id @method.ApiId @method.Verb
+                    </dt>
+                }
+            </dd>
+        }
+        else
+        {
+            <p>Для данного апи не допбавлены методы. </p><a href="#">Добавить новый</a>
+        }
     </dl>
 </div>
 <div>

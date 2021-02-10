@@ -201,11 +201,13 @@ F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\bin\Debug\netcoreapp3.1\runtimes
 F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
-F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\obj\Debug\netcoreapp3.1\ApiBankBackBone.csproj.CoreCompileInputs.cache
-F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\obj\Debug\netcoreapp3.1\ApiBankBackBone.MvcApplicationPartsAssemblyInfo.cs
-F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\obj\Debug\netcoreapp3.1\ApiBankBackBone.MvcApplicationPartsAssemblyInfo.cache
 F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\obj\Debug\netcoreapp3.1\Razor\Views\Apis\Create.cshtml.g.cs
 F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\obj\Debug\netcoreapp3.1\Razor\Views\Apis\Delete.cshtml.g.cs
 F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\obj\Debug\netcoreapp3.1\Razor\Views\Apis\Details.cshtml.g.cs
 F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\obj\Debug\netcoreapp3.1\Razor\Views\Apis\Edit.cshtml.g.cs
 F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\obj\Debug\netcoreapp3.1\Razor\Views\Apis\Index.cshtml.g.cs
+F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\bin\Debug\netcoreapp3.1\AutoMapper.dll
+F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\obj\Debug\netcoreapp3.1\ApiBankBackBone.csproj.CoreCompileInputs.cache
+F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\obj\Debug\netcoreapp3.1\ApiBankBackBone.MvcApplicationPartsAssemblyInfo.cs
+F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\obj\Debug\netcoreapp3.1\ApiBankBackBone.MvcApplicationPartsAssemblyInfo.cache

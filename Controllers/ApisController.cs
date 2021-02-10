@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ApiBankBackBone.Data;
 using ApiBankBackBone.Models.Apis;
+using AutoMapper;
 
 namespace ApiBankBackBone.Controllers
 {
     public class ApisController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMapper _mapper;
 
-        public ApisController(ApplicationDbContext context)
+        public ApisController(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: Apis
@@ -33,14 +36,17 @@ namespace ApiBankBackBone.Controllers
                 return NotFound();
             }
 
-            var api = await _context.Apis
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var api = await _context.Apis.FirstOrDefaultAsync(m => m.Id == id);
+
             if (api == null)
             {
                 return NotFound();
             }
 
-            return View(api);
+            var result = _mapper.Map<ApiDto>(api);
+            result.Methods = await _context.Methods.Where(m => m.ApiId == id).ToListAsync() ?? new List<Method>();
+
+            return View(result);
         }
 
         // GET: Apis/Create
