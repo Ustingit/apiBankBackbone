@@ -1081,7 +1081,7 @@
           "System.Xml.XDocument": "4.3.0"
         }
       },
-      "Newtonsoft.Json/12.0.2": {
+      "Newtonsoft.Json/12.0.3": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
@@ -1100,6 +1100,15 @@
         },
         "runtime": {
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
+        }
+      },
+      "PagedList.Core/1.17.4": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp1.0/PagedList.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp1.0/PagedList.Core.dll": {}
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -4629,10 +4638,10 @@
         "netstandard.library.nuspec"
       ]
     },
-    "Newtonsoft.Json/12.0.2": {
-      "sha512": "rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
+    "Newtonsoft.Json/12.0.3": {
+      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
       "type": "package",
-      "path": "newtonsoft.json/12.0.2",
+      "path": "newtonsoft.json/12.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4655,8 +4664,9 @@
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.12.0.2.nupkg.sha512",
-        "newtonsoft.json.nuspec"
+        "newtonsoft.json.12.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
       ]
     },
     "NuGet.Frameworks/4.7.0": {
@@ -4674,6 +4684,41 @@
         "lib/netstandard1.6/NuGet.Frameworks.xml",
         "nuget.frameworks.4.7.0.nupkg.sha512",
         "nuget.frameworks.nuspec"
+      ]
+    },
+    "PagedList.Core/1.17.4": {
+      "sha512": "Me111vdmlPp4GGeHqvNlnv4Raq1f1F77fDsJebuKsHCZXG4v4kMDzd5h1YVDv/Q7q9DuVgueR9mxp7eO7Yj4LA==",
+      "type": "package",
+      "path": "pagedlist.core/1.17.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/PagedList.Core.dll",
+        "lib/net45/PagedList.Core.pdb",
+        "lib/net451/PagedList.Core.dll",
+        "lib/net451/PagedList.Core.pdb",
+        "lib/net461/PagedList.Core.dll",
+        "lib/net461/PagedList.Core.pdb",
+        "lib/net462/PagedList.Core.dll",
+        "lib/net462/PagedList.Core.pdb",
+        "lib/netcoreapp1.0/PagedList.Core.dll",
+        "lib/netcoreapp1.0/PagedList.Core.pdb",
+        "lib/netstandard1.0/PagedList.Core.dll",
+        "lib/netstandard1.0/PagedList.Core.pdb",
+        "lib/netstandard1.1/PagedList.Core.dll",
+        "lib/netstandard1.1/PagedList.Core.pdb",
+        "lib/netstandard1.2/PagedList.Core.dll",
+        "lib/netstandard1.2/PagedList.Core.pdb",
+        "lib/netstandard1.3/PagedList.Core.dll",
+        "lib/netstandard1.3/PagedList.Core.pdb",
+        "lib/netstandard1.4/PagedList.Core.dll",
+        "lib/netstandard1.4/PagedList.Core.pdb",
+        "lib/netstandard1.5/PagedList.Core.dll",
+        "lib/netstandard1.5/PagedList.Core.pdb",
+        "lib/netstandard1.6/PagedList.Core.dll",
+        "lib/netstandard1.6/PagedList.Core.pdb",
+        "pagedlist.core.1.17.4.nupkg.sha512",
+        "pagedlist.core.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -9253,7 +9298,9 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.11",
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.11",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.11",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
+      "Newtonsoft.Json >= 12.0.3",
+      "PagedList.Core >= 1.17.4"
     ]
   },
   "packageFolders": {
@@ -9324,6 +9371,14 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[3.1.4, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[12.0.3, )"
+          },
+          "PagedList.Core": {
+            "target": "Package",
+            "version": "[1.17.4, )"
           }
         },
         "imports": [

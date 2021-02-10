@@ -208,6 +208,7 @@ F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\obj\Debug\netcoreapp3.1\Razor\Vi
 F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\obj\Debug\netcoreapp3.1\Razor\Views\Apis\Index.cshtml.g.cs
 F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\bin\Debug\netcoreapp3.1\AutoMapper.dll
 F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\bin\Debug\netcoreapp3.1\PagedList.Core.dll
 F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\obj\Debug\netcoreapp3.1\ApiBankBackBone.csproj.CoreCompileInputs.cache
 F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\obj\Debug\netcoreapp3.1\ApiBankBackBone.MvcApplicationPartsAssemblyInfo.cs
 F:\Learning\vue\apiBank\apiBack\ApiBankBackBone\obj\Debug\netcoreapp3.1\ApiBankBackBone.MvcApplicationPartsAssemblyInfo.cache

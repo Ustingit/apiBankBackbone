@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "W6pRtU+2ITwadk6ZqJt8mXRIxH/IGAa0InV6E4M0FNMbvm4w/Y2DdtnK+872Rz59gQmj6xjXf4wfat3ieI26CA==",
+  "dgSpecHash": "qkAwkRW4N/WLi0glchGmrWzRCtwFdhZAYCslOsm7K07SWj9pOC5X4c1gCRKHSXP+I61j4UlKXjgbIiqXPZcH2g==",
   "success": true,
   "projectFilePath": "F:\\Learning\\vue\\apiBank\\apiBack\\ApiBankBackBone\\ApiBankBackBone.csproj",
   "expectedPackageFiles": [
@@ -71,8 +71,9 @@
     "C:\\Users\\ustin\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\ustin\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\ustin\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
-    "C:\\Users\\ustin\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\ustin\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\ustin\\.nuget\\packages\\nuget.frameworks\\4.7.0\\nuget.frameworks.4.7.0.nupkg.sha512",
+    "C:\\Users\\ustin\\.nuget\\packages\\pagedlist.core\\1.17.4\\pagedlist.core.1.17.4.nupkg.sha512",
     "C:\\Users\\ustin\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\ustin\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\ustin\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
