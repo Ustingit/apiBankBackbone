@@ -1,0 +1,63 @@
+﻿@model ApiBankBackBone.Models.Apis.Api
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Api</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsFree)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsFree)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccessCost)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AccessCost)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MonthlyCost)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MonthlyCost)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AdditionalAccessRules)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AdditionalAccessRules)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.License)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.License)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
