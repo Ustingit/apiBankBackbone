@@ -53,5 +53,28 @@ namespace ApiBankBackBone.Controllers
 
 			return JsonConvert.SerializeObject(result);
 		}
+
+		[EnableCors("LocalApi")]
+		[HttpDelete]
+		public async Task<string> Delete(Guid id)
+		{
+			ApiResult result;
+
+			try
+			{
+				var api = await _context.Apis.FindAsync(id);
+				_context.Remove(api);
+				await _context.SaveChangesAsync();
+
+				var keyValue = new Dictionary<string, Guid> {{"deletedId", id}};
+				result = ApiResult.SucceedResult<Dictionary<string, Guid>>(keyValue);
+			}
+			catch (Exception e)
+			{
+				result = ApiResult.ErrorResult("1", $"{e.Message} - {e.InnerException} - {e.StackTrace}");
+			}
+
+			return JsonConvert.SerializeObject(result);
+		}
 	}
 }
