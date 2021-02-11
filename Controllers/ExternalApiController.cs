@@ -6,6 +6,7 @@ using ApiBankBackBone.Data;
 using ApiBankBackBone.Models.Apis;
 using ApiBankBackBone.Models.Common.Api;
 using AutoMapper;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -24,6 +25,7 @@ namespace ApiBankBackBone.Controllers
 			_mapper = mapper;
 		}
 
+		[EnableCors("LocalApi")]
 		public async Task<string> GetApis(int? page, int pageSize = 10)
 		{
 			var pageIndex = (page ?? 1) - 1; //MembershipProvider expects a 0 for the first page
