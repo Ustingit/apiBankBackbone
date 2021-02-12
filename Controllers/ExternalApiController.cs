@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using ApiBankBackBone.Data;
 using ApiBankBackBone.Models.Apis;
@@ -71,7 +73,44 @@ namespace ApiBankBackBone.Controllers
 			}
 			catch (Exception e)
 			{
-				result = ApiResult.ErrorResult("1", $"{e.Message} - {e.InnerException} - {e.StackTrace}");
+				result = ApiResult.ErrorResult("Api deleting error", $"{e.Message} - {e.InnerException} - {e.StackTrace}");
+			}
+
+			return JsonConvert.SerializeObject(result);
+		}
+
+		[EnableCors("LocalApi")]
+		[HttpPost]
+		public async Task<string> Create()
+		{
+			ApiResult result;
+
+			try
+			{
+				using StreamReader reader = new StreamReader(Request.Body, Encoding.UTF8);
+				var body = await reader.ReadToEndAsync();
+
+				var api = JsonConvert.DeserializeObject<Api>(body, new JsonSerializerSettings
+				{
+					NullValueHandling = NullValueHandling.Ignore
+				});
+
+				if (api != null)
+				{
+					api.Id = Guid.NewGuid();
+					await _context.Apis.AddAsync(api);
+					await _context.SaveChangesAsync();
+
+					result = ApiResult.SucceedResult<Api>(api);
+				}
+				else
+				{
+					result = ApiResult.ErrorResult("Api creation error 1", "api is not serialized");
+				}
+			}
+			catch (Exception e)
+			{
+				result = ApiResult.ErrorResult("Api creation error 2", $"{e.Message} - {e.InnerException} - {e.StackTrace}");
 			}
 
 			return JsonConvert.SerializeObject(result);
