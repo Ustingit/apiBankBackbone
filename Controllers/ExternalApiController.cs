@@ -115,5 +115,68 @@ namespace ApiBankBackBone.Controllers
 
 			return JsonConvert.SerializeObject(result);
 		}
+
+		[HttpGet]
+		public async Task<string> Add10Apis()
+		{
+			ApiResult result;
+			var apis = new List<Api>();
+
+			try
+			{
+				foreach (var index in Enumerable.Range(1, 11))
+				{
+					var api = new Api();
+					var random = new Random();
+					var temp = random.Next(0, 999);
+
+					api.Id = Guid.NewGuid();
+
+					var isOdd = temp % 2 == 0;
+					var partOfName = isOdd ? "Odd api, by crazy maniacs." : "Vovel api, beauty is here!";
+					api.Name = $"{index} Api. {partOfName}";
+
+					if (isOdd)
+					{
+						api.IsFree = true;
+					}
+					else
+					{
+						api.IsFree = false;
+						api.AccessCost = random.Next(1, 10000);
+						if (temp % 8 == 0)
+						{
+							api.MonthlyCost = random.Next(1, 10000);
+						}
+					}
+
+					api.License = $"APACHIK {index}.0";
+					api.AdditionalAccessRules = "do nothing";
+					api.Description = RandomString(random.Next(25, 1589));
+
+					await _context.Apis.AddAsync(api);
+					await _context.SaveChangesAsync();
+
+					apis.Add(api);
+				}
+
+				result = ApiResult.SucceedResult<List<Api>>(apis);
+			}
+			catch (Exception e)
+			{
+				result = ApiResult.ErrorResult("Api creation error 2", $"{e.Message} - {e.InnerException} - {e.StackTrace}");
+			}
+
+			return JsonConvert.SerializeObject(result);
+		}
+
+		private static string RandomString(int length)
+		{
+			var random = new Random();
+
+			const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+			return new string(Enumerable.Repeat(chars, length)
+				.Select(s => s[random.Next(s.Length)]).ToArray());
+		}
 	}
 }
