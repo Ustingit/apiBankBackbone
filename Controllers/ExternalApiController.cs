@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ApiBankBackBone.Data;
+using ApiBankBackBone.Helpers;
+using ApiBankBackBone.Helpers.Pagination;
 using ApiBankBackBone.Models.Apis;
 using ApiBankBackBone.Models.Common.Api;
 using AutoMapper;
@@ -28,31 +30,35 @@ namespace ApiBankBackBone.Controllers
 		}
 
 		[EnableCors("LocalApi")]
-		public async Task<string> GetApis(int? page, int pageSize = 10)
+		public async Task<string> GetApis(int page = 1, int size = 10, string filter = null)
 		{
-			var pageIndex = (page ?? 1) - 1; //MembershipProvider expects a 0 for the first page
+			ApiResult result;
 
-			var apis = await _context.Apis.ToListAsync();
-			var apiIds = apis.Select(x => x.Id);
-			var methods = (await _context.Methods.Where(x => apiIds.Contains(x.ApiId)).ToListAsync())
-				.GroupBy(x => x.ApiId)
-				.ToDictionary(x => x.Key, x => x.ToArray());
-
-			var listOfDto = new List<ApiDto>();
-			foreach (var api in apis)
+			try
 			{
-				var dto = _mapper.Map<ApiDto>(api);
-				if (methods.TryGetValue(dto.Id, out var concreteMethods))
+				var paginationData = await GetApisForPagination(page, size, filter);
+				var methods = await GetMethods(paginationData.Item1);
+
+				var listOfDto = new List<ApiDto>();
+				foreach (var api in paginationData.Item1)
 				{
-					dto.Methods = concreteMethods;
+					var dto = _mapper.Map<ApiDto>(api);
+					if (methods.TryGetValue(dto.Id, out var concreteMethods))
+					{
+						dto.Methods = concreteMethods;
+					}
+
+					listOfDto.Add(dto);
 				}
 
-				listOfDto.Add(dto);
+				var paginationDto = new SimplePaginationDto<ApiDto>(listOfDto, page, size, paginationData.Item2, filter);
+				result = ApiResult.SucceedResult<SimplePaginationDto<ApiDto>>(paginationDto);
 			}
-
-			var apisAsIPagedList = new StaticPagedList<ApiDto>(listOfDto, pageIndex + 1, pageSize, listOfDto.Count);
-			var result = ApiResult.SucceedResult<StaticPagedList<ApiDto>>(apisAsIPagedList);
-
+			catch (Exception e)
+			{
+				result = ApiResult.ErrorResult("Api fetching error 1", $"{e.Message} - {e.InnerException} - {e.StackTrace}");
+			}
+			
 			return JsonConvert.SerializeObject(result);
 		}
 
@@ -152,7 +158,7 @@ namespace ApiBankBackBone.Controllers
 
 					api.License = $"APACHIK {index}.0";
 					api.AdditionalAccessRules = "do nothing";
-					api.Description = RandomString(random.Next(25, 1589));
+					api.Description = StringHelper.RandomString(random.Next(25, 1589));
 
 					await _context.Apis.AddAsync(api);
 					await _context.SaveChangesAsync();
@@ -170,13 +176,29 @@ namespace ApiBankBackBone.Controllers
 			return JsonConvert.SerializeObject(result);
 		}
 
-		private static string RandomString(int length)
+		private async Task<Tuple<List<Api>, int>> GetApisForPagination(int page, int pageSize, string filter)
 		{
-			var random = new Random();
+			var rawApis = string.IsNullOrEmpty(filter)
+				? _context.Apis
+				: _context.Apis.Where(x => EF.Functions.Like(x.Name, $"%{filter.ToLower()}%")
+				                           || EF.Functions.Like(x.Description, $"%{filter.ToLower()}%")
+				                           || EF.Functions.Like(x.License, $"%{filter.ToLower()}%")
+				                           || EF.Functions.Like(x.AdditionalAccessRules, $"%{filter.ToLower()}%"));
 
-			const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-			return new string(Enumerable.Repeat(chars, length)
-				.Select(s => s[random.Next(s.Length)]).ToArray());
+			var countToSkip = page == 1 ? 0 : ((page - 1) * pageSize);
+			var totalCount = await rawApis.CountAsync();
+			var apis = await rawApis.Skip(countToSkip).Take(pageSize).ToListAsync();
+
+			return new Tuple<List<Api>, int>(apis, totalCount);
+		}
+
+		private async Task<Dictionary<Guid, Method[]>> GetMethods(IEnumerable<Api> apis)
+		{
+			var apiIds = apis.Select(x => x.Id);
+
+			return (await _context.Methods.Where(x => apiIds.Contains(x.ApiId)).ToListAsync())
+				.GroupBy(x => x.ApiId)
+				.ToDictionary(x => x.Key, x => x.ToArray());
 		}
 	}
 }
